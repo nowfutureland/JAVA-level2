@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class 계산기 {
+
+	public static void main(String[] args) {
+		// 배열 입력 받기
+		Scanner scan = new Scanner(System.in);
+		// 클래스명 참조변수 = 생성자
+		// 배열 크기 입력 받기
+		System.out.print("숫자 몇개 입력?");
+		int 배열크기 = scan.nextInt();
+
+		int[] 배열 = new int[배열크기];
+		int 결과값 = 0;
+
+		for (int i = 0; i < 배열.length; i++) {
+			System.out.printf("num[%d]: ", i);
+			배열[i] = scan.nextInt();
+		}
+
+		배열입력(배열);
+
+		String 연산자 = " ";
+		while (true) {
+			System.out.print("연산자 선택 +, -, *");
+			연산자 = scan.next();
+			if (연산자.equals("+") || 연산자.equals("-") || 연산자.equals("*"))
+				break;
+		}
+		결과값 = 연산작업(연산자, 배열);
+		
+		System.out.printf("연산(%s) 결과: %d\n", 연산자, 결과값);
+	}
+
+	static int 연산작업(String 연산자, int[] 배열) {
+		int 결과값 = 0;
+		switch (연산자) {
+		case "+":
+			for (int i = 0; i < 배열.length; i++) {
+				결과값 += 배열[i];
+			}
+			break;
+		case "-":
+			for (int i = 0; i < 배열.length; i++) {
+				결과값 -= 배열[i];
+			}
+			break;
+		case "*":
+			결과값 = 1;
+			for (int i = 0; i < 배열.length; i++) {
+				결과값 *= 배열[i];
+			}
+			break;
+		default:
+			System.out.println("다시 입력");
+			break;
+		}
+		return 결과값;
+	}
+
+	static void 배열입력(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]);
+		}
+		System.out.println();
+	}
+}
