@@ -1,0 +1,35 @@
+package _0529;
+
+import java.util.Random;
+
+public class main {
+
+	public static void main(String[] args) {
+
+		Hero 나 = new Hero("나",100,30,40);
+		
+		Random rd = new Random();
+		Hero 적 = new Hero("적");
+		
+		
+		while(true) {
+		int 적행동 = rd.nextInt();
+		if(적행동<5) {
+			적.공격(나);
+		}else {
+			나.공격(적);
+		}		
+			int 내체력 = 나.get체력();
+			int 적체력 = 적.get체력();
+			System.out.println("내체력:"+내체력+" 적체력:"+적체력);
+			
+			if(적.get체력()<=0) {
+				System.out.println(나.get이름()+" 승리");
+				break;
+			}else if(나.get체력()<=0) {
+				System.out.println(적.get이름()+" 승리");
+				break;
+			}
+		}
+	}
+}
